@@ -19,13 +19,15 @@ session_start();
 			  <input type="text" class="form-control" name="Username" placeholder="Username" required="" autofocus="" />
 			  <input type="password" class="form-control" name="Password" placeholder="Password" required=""/>     		  
 			 
-			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login as Admin</button>
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit2" value="Login" type="Submit">Login as Public</button>  			
 		</form>		
 		<?php
+			
 			if(isset($_POST['Submit'])){
 				$username = $_POST['Username'];
-				$password = $_POST['Password'];	
-				$con = mysqli_connect('localhost','root','','library');
+				$password = $_POST['Password'];
+				$con = mysqli_connect('localhost','root','password','library');
 				if($con){
 					$query = "select * from admin_login where 
 					admin_name='$username' AND admin_pass='$password'";
@@ -46,9 +48,30 @@ session_start();
 					}
 				}
 
-			}
-			
+			}elseif(isset($_POST['Submit2'])){
+				$username = $_POST['Username'];
+				$password = $_POST['Password'];
+				$con = mysqli_connect('localhost','root','password','library');
+				if($con){
+					$query = "select * from members where 
+					member_name='$username' AND member_pass='$password'";
+					$result = mysqli_query($con,$query);
+					if(mysqli_num_rows($result)>0){
+						$_SESSION['member_name'] = $username;
+						$_SESSION['member_pass'] = $password;
+						echo "<script>
+							alert('You are authenticated!');
+							window.location.href='index.php';
+						</script>";
 
+					}
+					else{
+						echo "<script>
+							alert('You are not authenticated!');
+							</script>";
+					}
+				}
+			}
 		?>	
 	</div>
 </div>

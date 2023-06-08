@@ -39,13 +39,13 @@ if(!$_SESSION['user']){
 </nav>
 <div class="row">
 	<div class="col-md-12">
-<img class="banner img-responsive" src="http://www.bu.edu/library/files/2011/07/banner_bookshelf.jpg"/>
+<img class="banner img-responsive" src="logo.jpg"/>
 	</div>
 </div>
 	<h1>Welcome to admin area</h1>
 	<div class="row">
 		<div class="col-md-12">
-			<img style="margin:3% auto;width:40%"class="img-responsive" src="https://www.cs.uic.edu/~mghasemi/assets/images/pgp.png"/>
+			<img style="margin:3% auto;width:75%;height: 200px;"class="img-responsive" src="key.jpg"/>
 		</div>
 	</div>
 </body>

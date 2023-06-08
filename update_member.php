@@ -59,12 +59,20 @@ if(!$_SESSION['user']){
 				$member_name = $_POST['name'];
 				$member_id = $_POST['id'];
 				
-				$con = mysqli_connect('localhost','root','','library');
+				$con = mysqli_connect('localhost','root','password','library');
+				
 				$query="update members
 				set member_name = '$member_name'
 				where member_id = '$member_id'
 				";
 				$result = mysqli_query($con,$query);
+				if(strlen($member_name)==0 || strlen($member_id)==0){
+					echo "
+					<script>
+					alert('Enter Valid Values');
+					</script>
+				";return false;	
+				}
 				if($result == true){
 					echo "
 						<script>

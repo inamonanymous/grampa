@@ -47,16 +47,36 @@ if(!$_SESSION['user']){
 			<div class="form-group">
 			<label>Enter Member Name</label>
 			<input class="form-control" name="name" type="text"/>
+			<label>Enter Member Password</label>
+			<input class="form-control" name="pass" type="password"/>
+			<label>Re-enter Password</label>
+			<input class="form-control" name="pass2" type="password"/>
 			</div>
 			<input type="submit" name="sub" class="btn btn-danger"/>
 		</form>
 		<?php
 			if(isset($_POST['sub'])){
 				$member_name = $_POST['name'];
-				
-				$con = mysqli_connect('localhost','root','','library');
-				$query="insert into members(member_name) values('$member_name')";
+				$member_pass = $_POST['pass'];
+				$member_pass2 = $_POST['pass2'];	
+				if($member_pass!=$member_pass2){
+					echo "
+					<script>
+					alert('Passwords do not match');
+					</script>
+				";return false;	
+				}
+
+				$con = mysqli_connect('localhost','root','password','library');
+				$query="insert into members(member_name, member_pass) values('$member_name', '$member_pass')";
 				$result = mysqli_query($con,$query);
+				if(strlen($member_name)==0){
+					echo "
+					<script>
+					alert('Enter Valid Values');
+					</script>
+				";return false;	
+				}
 				if($result == true){
 					echo "
 						<script>

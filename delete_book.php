@@ -55,9 +55,17 @@ if(!$_SESSION['user']){
 		<?php
 			if(isset($_POST['sub'])){
 				$bookname = $_POST['name'];
-				$con = mysqli_connect('localhost','root','','library');
-				$query="delete from book_store where book_name='$bookname'";
+				$con = mysqli_connect('localhost','root','password','library');
+				$query="delete from book_csv where book_name='$bookname'";
 				$result = mysqli_query($con,$query);
+				if(strlen($bookname)==0){
+					echo "
+					<script>
+					alert('Enter Valid Values');
+					</script>
+				";	
+					return false;
+				}
 				if($result == true){
 					echo "
 						<script>
@@ -71,7 +79,7 @@ if(!$_SESSION['user']){
 						alert('Something went wrong!');
 						</script>
 					";	
-					echo "oho prito meray naal wya karlay";
+					
 				}
 				
 			}

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!$_SESSION['public_user']){
+if(!$_SESSION['member_name']){
 	echo "
 		<script>
 		window.location.href='login.php';
@@ -57,16 +57,15 @@ if(!$_SESSION['public_user']){
 <div class="row">
 	<?php
 	if(isset($_GET['submit']) && $_GET['search']!== ''){
-	$con = mysqli_connect('localhost','root','','library');
+	$con = mysqli_connect('localhost','root','password','library');
 	$search_query = $_GET['search'];
-	$query = "select * from book_store where book_name like '%$search_query%'";
+	$query = "select * from book_csv where book_name like '%$search_query%'";
 	$result = mysqli_query($con,$query);
 	foreach ($result as $value) {
-			$img = $value['book_image'];
-			$id = $value['bood_id'];
+			$id = $value['book_id'];
 			echo "
 				<div class='col-md-4 img responsive'>
-					<img src='./images/$img' class='book img-responsive'/>
+					
 					<button class='btn btn-primary'><a href='issue.php?id=$id'> Issue Book </a></button>
 					<button class='btn btn-primary'><a href='reserve.php?id=$id'> Reserve Book</a></button>
 				</div>

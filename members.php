@@ -56,7 +56,7 @@ if(!$_SESSION['user']){
     </thead>
     <tbody>
         <?php
-        	$conn = mysqli_connect('localhost','root','','library');
+        	$conn = mysqli_connect('localhost','root','password','library');
         	$query = "select * from members";
         	$results = mysqli_query($conn,$query);
 

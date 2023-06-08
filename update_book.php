@@ -57,13 +57,10 @@ if(!$_SESSION['user']){
 			<input class="form-control" name="isbn" type="text"/>
 			</div>
 			<div class="form-group">
-			<label>Enter Book Category :</label>
+			<label>Enter Book Author :</label>
 			<input class="form-control" name="cat" type="text"/>
 			</div>
-			<div class="form-group">
-			<label>Enter Book image :</label>
-			<input class="form-control" name="image" type="file" value="Enter an image"/>
-			</div>
+			
 			<input type="submit" name="sub" class="btn btn-danger"/>
 		</form>
 		<?php
@@ -72,19 +69,24 @@ if(!$_SESSION['user']){
 				$book_id = $_POST['id'];
 				$isbn = $_POST['isbn'];
 				$cat = $_POST['cat'];
-				$image = $_FILES['image']['name'];
-				$temp = $_FILES['image']['tmp_name'];
-				move_uploaded_file($temp, "product_images/$image");
+				
 
-				$con = mysqli_connect('localhost','root','','library');
-				$query="update book_store
+				$con = mysqli_connect('localhost','root','password','library');
+				$query="update book_csv
 				set book_name = '$bookname',
-				book_image = '$image',
 				book_isbn = '$isbn',
-				category = '$cat'
-				where bood_id = '$book_id'
+				author = '$cat'
+				where id = '$book_id'
 				";
 				$result = mysqli_query($con,$query);
+				if(strlen($bookname)==0 || strlen($isbn)<=12 || strlen($cat)<=5 || strlen($book_id)==0){
+					
+					echo "
+					<script>
+					alert('Enter Valid Values');
+					</script>
+				";	return false;
+				}
 				if($result == true){
 					echo "
 						<script>

@@ -40,7 +40,7 @@ if(!$_SESSION['user']){
 </nav>
 <div class="row">
 	<div class="col-md-12">
-<img class="banner img-responsive" src="http://www.bu.edu/library/files/2011/07/banner_bookshelf.jpg"/>
+<img class="banner img-responsive" src="logo.jpg"/>
 	</div>
 </div>
 	<h1>Add A Book</h1>
@@ -54,13 +54,11 @@ if(!$_SESSION['user']){
 			<input class="form-control" name="isbn" type="text"/>
 			</div>
 			<div class="form-group">
-			<label>Enter Book Category :</label>
+			<label>Enter Book Author :</label>
 			<input class="form-control" name="cat" type="text"/>
 			</div>
 			<div class="form-group">
-			<label>Enter Book image :</label>
-			<input class="form-control" name="image" type="file" value="Enter an image"/>
-			</div>
+			
 
 			<input type="submit" name="sub" class="btn btn-danger"/>
 		</form>
@@ -69,13 +67,21 @@ if(!$_SESSION['user']){
 				$bookname = $_POST['name'];
 				$isbn = $_POST['isbn'];
 				$cat = $_POST['cat'];
-				$image = $_FILES['image']['name'];
-				$temp = $_FILES['image']['tmp_name'];
-				move_uploaded_file($temp, "product_images/$image");
+				
 
-				$con = mysqli_connect('localhost','root','','library');
-				$query="insert into book_store(book_name,book_image,book_isbn,category) values('$bookname','$image','$isbn','$cat')";
+				$con = mysqli_connect('localhost','root','password','library');
+				$query="insert into book_csv(book_name,book_isbn,author) values('$bookname','$isbn','$cat')";
 				$result = mysqli_query($con,$query);
+				if(strlen($bookname)==0 || strlen($isbn)<=12 || strlen($cat)<=4){
+					
+					echo "
+					<script>
+					alert('Enter Valid Values');
+					</script>
+				";
+				return false;	
+				}
+				
 				if($result == true){
 					echo "
 						<script>
@@ -93,7 +99,7 @@ if(!$_SESSION['user']){
 				}
 				
 			}
-			else echo "Something went wrong";
+		
 		?>
 </body>
 </html>

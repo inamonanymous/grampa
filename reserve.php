@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!$_SESSION['public_user']){
+if(!$_SESSION['member_name']){
 	echo "
 		<script>
 		window.location.href='login.php';
@@ -23,7 +23,7 @@ if(!$_SESSION['public_user']){
     				  <a class="navbar-brand" href="#">Library</a>
     			 </div>
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="#">Home</a></li>
+				      <li class="active"><a href="index.php">Home</a></li>
 				      <li><a href="issue.php">Issue Book</a></li>
 				      <li><a href="#">Reserve Book</a></li>
 				      
@@ -64,10 +64,10 @@ if(!$_SESSION['public_user']){
 			<div class="form-group">
 			
 			<?php
-				$con = mysqli_connect('localhost','root','','library');
-				$id = $_GET['id'];
-				$result = mysqli_query($con,"select book_name from book_store where bood_id='$id'");
-					
+				$con = mysqli_connect('localhost','root','password','library');
+				$id = $_GET['id'];	
+				$result = mysqli_query($con,"select book_name from books_csv where id='$id'");
+				
 					foreach ($result as $value) {
 						$book = $value['book_name'];
 							echo "
@@ -101,7 +101,7 @@ if(!$_SESSION['public_user']){
 <div class="footer">
 	<div class="row">
 		<div class="col-md-12">
-			<h2 class="footer-head">&copy; 2017 Library Mangement System</h2>
+			<h2 class="footer-head">&copy; Abenojar, Repana, Versosa Library Mangement System</h2>
 		</div>
 	</div>
 </div>
@@ -121,9 +121,9 @@ let button = document.querySelector('#date').value;
 </body>
 <?php
 	if(isset($_POST['name']) && isset($_POST['book']) && isset($_POST['date'])){
-		$con = mysqli_connect('localhost','root','','library');
+		$con = mysqli_connect('localhost','root','password','library');
 			 	$user_book = $_POST['book'];
-			 	$results = mysqli_query($con,"select * from book_store where book_name='$user_book'");
+			 	$results = mysqli_query($con,"select * from books_csv where book_name='$user_book'");
 			 	$rows = mysqli_num_rows($results);
 			 	if($rows == 0){
 			 		echo "

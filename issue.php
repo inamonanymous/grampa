@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!$_SESSION['public_user']){
+if(!$_SESSION['member_name']){
 	echo "
 		<script>
 		window.location.href='login.php';
@@ -63,9 +63,9 @@ if(!$_SESSION['public_user']){
 			</div>
 			<div class="form-group">
 			<?php
-				$con = mysqli_connect('localhost','root','','library');
+				$con = mysqli_connect('localhost','root','password','library');
 				$id = $_GET['id'];
-				$result = mysqli_query($con,"select book_name from book_store where bood_id='$id'");
+				$result = mysqli_query($con,"select book_name from books_csv where id='$id'");
 					
 					foreach ($result as $value) {
 						$book = $value['book_name'];
@@ -95,17 +95,17 @@ if(!$_SESSION['public_user']){
 <div class="footer">
 	<div class="row">
 		<div class="col-md-12">
-			<h2 class="footer-head">&copy; 2017 Library Mangement System</h2>
+		<h2 class="footer-head">&copy; Grampa, Mallari, Tuano | Library Mangement System</h2>
 		</div>
 	</div>
 </div>
 </body>
 <?php
-	if($_POST['name']!=='a' && isset($_POST['submit'])){
+	if(isset($_POST['name']) && isset($_POST['submit'])){
 
-		$con = mysqli_connect('localhost','root','','library');
+		$con = mysqli_connect('localhost','root','password','library');
 			 	$user_book = $_POST['book'];
-			 	$results = mysqli_query($con,"select * from book_store where book_name='$user_book'");
+			 	$results = mysqli_query($con,"select * from book_csv where book_name='$user_book'");
 			 	$rows = mysqli_num_rows($results);
 			 	if($rows == 0){
 			 		echo "

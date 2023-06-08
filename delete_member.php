@@ -55,9 +55,17 @@ if(!$_SESSION['user']){
 		<?php
 			if(isset($_POST['sub'])){
 				$membername = $_POST['name'];
-				$con = mysqli_connect('localhost','root','','library');
+				$con = mysqli_connect('localhost','root','password','library');
 				$query="delete from members where member_name='$membername'";
 				$result = mysqli_query($con,$query);
+				if(strlen($membername)==0){
+					
+					echo "
+					<script>
+					alert('Enter Valid Values');
+					</script>
+				";return false;	
+				}
 				if($result == true){
 					echo "
 						<script>
