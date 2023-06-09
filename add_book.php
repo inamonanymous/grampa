@@ -40,7 +40,7 @@ if(!$_SESSION['user']){
 </nav>
 <div class="row">
 	<div class="col-md-12">
-<img class="banner img-responsive" src="logo.jpg"/>
+<img class="banner img-responsive" src="http://www.bu.edu/library/files/2011/07/banner_bookshelf.jpg"/>
 	</div>
 </div>
 	<h1>Add A Book</h1>

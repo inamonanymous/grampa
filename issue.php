@@ -105,7 +105,7 @@ if(!$_SESSION['member_name']){
 
 		$con = mysqli_connect('localhost','root','password','library');
 			 	$user_book = $_POST['book'];
-			 	$results = mysqli_query($con,"select * from book_csv where book_name='$user_book'");
+			 	$results = mysqli_query($con,"select * from books_csv where book_name='$user_book'");
 			 	$rows = mysqli_num_rows($results);
 			 	if($rows == 0){
 			 		echo "
