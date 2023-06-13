@@ -43,10 +43,7 @@ if(!$_SESSION['user']){
 	</div>
 </div>
 	<h1>Welcome to admin area</h1>
-	<div class="row">
-		<div class="col-md-12">
-			<img style="margin:3% auto;width:75%;height: 200px;"class="img-responsive" src="key.jpg"/>
-		</div>
+	
 	</div>
 </body>
 </html>

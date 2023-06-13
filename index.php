@@ -30,6 +30,7 @@ th, td {
   border-bottom: 2px solid #000;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
+  vertical-align: middle;
 }
 
 th {
@@ -89,6 +90,8 @@ th {
 				<th>Book Name</th>
 				<th>Book ISBN</th>
 				<th>Book Author</th>
+				
+				<th>Reserve Book</th>
 			</tr>
 		</thead>
 		</table>
@@ -107,7 +110,7 @@ th {
 					<td><p style=''class='bookname'>'$book_name'</p></td>
 					<td><p style=' 'class='bookname'>'$book_isbn'</p></td>
 					<td><p style=' 'class='bookname'>'$category'</p></td>
-					<td><button class='btn btn-primary'><a href='issue.php?id=$id'> Issue Book </a></button></td>
+					
 					<td><button class='btn btn-primary'><a href='reserve.php?id=$id'> Reserve Book</a></button></td>
 				</tr>
 			</tbody>

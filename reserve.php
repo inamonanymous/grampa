@@ -56,7 +56,7 @@ if(!$_SESSION['member_name']){
 <div class="container">
 <div class="row">
 	<div class="col-md-12">
-		<form action="reserve.php" method="post" onsubmit="return checkDate(event)">
+		<form action="reserve.php" method="post" >
 			<div class="form-group">
 			<label>Enter Your Name:</label>
 			<input class="form-control" name="name" type="text"/>
@@ -101,7 +101,7 @@ if(!$_SESSION['member_name']){
 <div class="footer">
 	<div class="row">
 		<div class="col-md-12">
-			<h2 class="footer-head">&copy; Abenojar, Repana, Versosa Library Mangement System</h2>
+			<h2 class="footer-head">&copy; Grampa, Mallari, Tuano | Library Mangement System</h2>
 		</div>
 	</div>
 </div>

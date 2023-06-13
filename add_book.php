@@ -70,7 +70,7 @@ if(!$_SESSION['user']){
 				
 
 				$con = mysqli_connect('localhost','root','password','library');
-				$query="insert into book_csv(book_name,book_isbn,author) values('$bookname','$isbn','$cat')";
+				$query="insert into books_csv(book_name,book_isbn,author) values('$bookname','$isbn','$cat')";
 				$result = mysqli_query($con,$query);
 				if(strlen($bookname)==0 || strlen($isbn)<=12 || strlen($cat)<=4){
 					

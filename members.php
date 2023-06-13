@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 if(!$_SESSION['user']){
   echo "
@@ -50,7 +50,7 @@ if(!$_SESSION['user']){
       <tr>
         <th>#</th>
         <th>Member Name</th>
-        <th>Books Issued</th>
+        
         <th>Books Reserved</th>
       </tr>
     </thead>
@@ -65,22 +65,22 @@ if(!$_SESSION['user']){
         		echo "<tr>";
         		echo "<td class='info'>".$value['member_id'] . "</td>";
         		echo "<td class='info'>".$value['member_name'] . "</td>";
+            $query = "select book_name from reserve
+        			 where reserve.person_name = '$name'";
+        	  $resulty = mysqli_query($conn,$query);
         	
-        	$query = "select book_name from issue_table
+        	  foreach ($resulty as $value) {
+        		  echo "<td class='info'>" . $value['book_name'] . "</br>" . "</td>";
+        	  }
+        	  echo "</tr>";
+        	/*$query = "select book_name from issue_table
         			 where issue_table.person_name = '$name'";
         	$result = mysqli_query($conn,$query);
         	
         	foreach ($result as $value) {
         		echo "<td class='info'>" . $value['book_name'] . "</br>" . "</td>";
-        	}
-        	$query = "select book_name from reserve
-        			 where reserve.person_name = '$name'";
-        	$resulty = mysqli_query($conn,$query);
+        	}*/
         	
-        	foreach ($resulty as $value) {
-        		echo "<td class='info'>" . $value['book_name'] . "</br>" . "</td>";
-        	}
-        	echo "</tr>";
         }
         ?>
     </tbody>

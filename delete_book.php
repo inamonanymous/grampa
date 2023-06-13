@@ -56,7 +56,7 @@ if(!$_SESSION['user']){
 			if(isset($_POST['sub'])){
 				$bookname = $_POST['name'];
 				$con = mysqli_connect('localhost','root','password','library');
-				$query="delete from book_csv where book_name='$bookname'";
+				$query="delete from books_csv where book_name='$bookname'";
 				$result = mysqli_query($con,$query);
 				if(strlen($bookname)==0){
 					echo "

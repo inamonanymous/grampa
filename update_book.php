@@ -72,7 +72,7 @@ if(!$_SESSION['user']){
 				
 
 				$con = mysqli_connect('localhost','root','password','library');
-				$query="update book_csv
+				$query="update books_csv
 				set book_name = '$bookname',
 				book_isbn = '$isbn',
 				author = '$cat'
