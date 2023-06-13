@@ -20,11 +20,11 @@ if(!$_SESSION['member_name']){
 	<nav class="navbar navbar-default">
   			<div class="container-fluid">
    				 <div class="navbar-header">
-    				  <a class="navbar-brand" href="#">Library</a>
+    				  <a class="navbar-brand" href="index.php">Library</a>
     			 </div>
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="#">Home</a></li>
-				      <li><a href="issue.php">Issue Book</a></li>
+				      <li class="active"><a href="index.php">Home</a></li>
+				      
 				      <li><a href="reserve.php">Reserve Book</a></li>
 				     
 				       
@@ -59,14 +59,14 @@ if(!$_SESSION['member_name']){
 	if(isset($_GET['submit']) && $_GET['search']!== ''){
 	$con = mysqli_connect('localhost','root','password','library');
 	$search_query = $_GET['search'];
-	$query = "select * from book_csv where book_name like '%$search_query%'";
+	$query = "select * from books_csv where book_name like '%$search_query%'";
 	$result = mysqli_query($con,$query);
 	foreach ($result as $value) {
 			$id = $value['book_id'];
 			echo "
 				<div class='col-md-4 img responsive'>
 					
-					<button class='btn btn-primary'><a href='issue.php?id=$id'> Issue Book </a></button>
+					
 					<button class='btn btn-primary'><a href='reserve.php?id=$id'> Reserve Book</a></button>
 				</div>
 			";

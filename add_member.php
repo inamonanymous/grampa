@@ -90,10 +90,11 @@ if(!$_SESSION['user']){
 						alert('Something went wrong!');
 						</script>
 					";	
+					echo "Something went wrong";
 				}
 				
 			}
-			else echo "Something went wrong";
+			
 		?>
 </body>
 </html>

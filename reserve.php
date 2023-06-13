@@ -24,7 +24,7 @@ if(!$_SESSION['member_name']){
     			 </div>
 				    <ul class="nav navbar-nav">
 				      <li class="active"><a href="index.php">Home</a></li>
-				      <li><a href="issue.php">Issue Book</a></li>
+				      
 				      <li><a href="#">Reserve Book</a></li>
 				      
 				       

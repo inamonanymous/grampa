@@ -87,9 +87,9 @@ if(!$_SESSION['user']){
 						</script>
 					";	
 				}
-				
+				echo "Something went wrong";
 			}
-			else echo "Something went wrong";
+			
 		?>
 </body>
 </html>

@@ -46,7 +46,7 @@ th {
     			 </div>
 				    <ul class="nav navbar-nav">
 				      <li class="active"><a href="index.php">Home</a></li>
-				      <li><a href="issue.php">Issue Book</a></li>
+				      
 				      <li><a href="reserve.php">Reserve Book</a></li>
 				     
 				      
@@ -111,7 +111,7 @@ th {
 					<td><p style=' 'class='bookname'>'$book_isbn'</p></td>
 					<td><p style=' 'class='bookname'>'$category'</p></td>
 					
-					<td><button class='btn btn-primary'><a href='reserve.php?id=$id'> Reserve Book</a></button></td>
+					<td><button class='btn btn-primary' ><a href='reserve.php?id=$id'> Reserve Book</a></button></td>
 				</tr>
 			</tbody>
 		</table>
